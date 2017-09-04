@@ -1,0 +1,52 @@
+Table:  number  |   value
+        -----------------
+        1       | Chen
+        2       | Jones
+        3       | 42
+        4       | Viola Davis
+        
+1) the numbers are all the same data-type and meaning as each other, the values 
+for 1,2 and 4 are also the same data-type/meaning as each other, and the value for
+3 is the same data-type as the numbers, but the same meaning as the values.
+
+2) A database might be used whenever data is required to persist past the life of
+a session, and/or across multiple platforms/access points.
+
+3) One difference between SQL and other languages is that SQL is a declarative 
+language (you tell SQL what you want, not how to get what you want), whereas other
+languages may be a procedural language (you tell the program how to do things)\
+
+4) A database can be structured as follows: A file stores data in a binary format,
+the data is stored in tables with columns (of labels) and rows (of data). You then
+use some language to access/edit those tables.
+
+5)  table = place to store one type of data
+    row = one instance of data for a table
+    column = one attribute that the table's data needs to have
+    value = what any instance (of a row) has at a given column location
+    
+6) string, integer, date
+
+7)  
+    a)  date    |   amount
+        -----------------
+        5/1/2016    | 1500.00 
+        5/10/2016   | 37.00
+        5/15/2016   | 124.93
+        5/23/2016   | 54.72
+    
+    
+    b)  amount
+        -------
+        1500.00     
+    
+    c)  date    |   payee    |  amount  |  memo
+        -----------------------------------------------
+         5/15/2016  | Mega Foods |  124.93  | Groceries
+         
+8) 
+    a) SELECT email, signup FROM users WHERE name = 'DeAndre Data';
+    
+    b) SELECT userid FROM users WHERE email = 'aleesia.algorithm@uw.edu';
+    
+    c) SELECT * FROM users WHERE userid = 4;
