@@ -1,0 +1,95 @@
+1)  adding:     INSERT INTO
+    updating:   UPDATE 
+    deleting:   DELETE
+
+2) This question is not clear. But I think the solution is: INSERT INTO tells the db 
+to add data to an existing table, the UPDATE command tells the db to update the table, 
+or data within it, and the DELETE command tells the db to DELETE part or all of the
+table.
+
+3) A google search will tell me all I need to know ;-)
+
+4) a] string b] boolean c] integer d] float
+
+CREATE TABLE wedding-rsvp (
+    id INTEGER, unique true,
+    full_name STRING,
+    rsvp BOOLEAN,
+    guests INTEGER,
+    meals FLOAT
+);
+
+ALTER TABLE wedding-rsvp ADD COLUMN send-card BOOLEAN;
+
+ALTER TABLE wedding-rsvp DROP COLUMN meals;
+
+ALTER TABLE wedding-rsvp ADD COLUMN table_number INTEGER;
+
+DROP TABLE wedding-rsvp
+
+5) 
+CREATE TABLE books (
+    id integer, unique true,
+    isbn string,
+    title string,
+    author string,
+    genre string,
+    publishing_date date,
+    total_copies integer,
+    available_copies integer
+);
+
+INSERT INTO books 
+(isbn, title, author, genre, publishing_date, total_copies, available_copies)
+VALUES 
+("978-0-385-53463-5", "The Night Circus", "Erin Morgenstern", "Fantasy", 2/13/2011, 20, 12), 
+("0-345-24032-4", "The Fellowship of the Ring", "J.R.R.Tolkien", "Fantasy", 29/7/1954, 12, 2), 
+("978-0-06-091594-0", "The art of Loving", "Erich Fromm", "Psychology", 1/1/1956, 2, 2);
+
+UPDATE books SET available_copies=11 WHERE isbn="978-0-385-53463-5";
+
+DELETE FROM books WHERE isbn="978-0-06-091594-0" AND title="The art of Loving";
+
+6) 
+CREATE TABLE spacecraft (
+    id integer, unique true,
+    name string,
+    year_launched date,
+    owner string,
+    orbiting_body string,
+    operational boolean,
+    km_from_earth integer,
+    summary string
+);
+
+INSERT INTO spacecraft 
+(name, year_launched, owner, orbiting_body, operational, km_from_earth, summary)
+VALUES
+("Voyager1", 1977, "USA", "Escaping", true, 19000000000, "Farthest man-made object"),
+("Buran", 1988, "USSR", "Earth", true, 0, "Soviet Spaceplane"),
+("MESSENGER", 2004, "USA", "Mercury", false, 12000000, "Most recent spacecraft to visit Mercury");
+
+DELETE FROM spacecraft WHERE name="MESSENGER" AND operational=false;
+
+UPDATE spacecraft SET operational=false WHERE name="Buran";
+
+7) 
+CREATE TABLE emails (
+    id integer, unique true,
+    sender string,
+    cc string,
+    subject string,
+    body string,
+    timestamp timestamp,
+    unread boolean,
+    chain_id integer
+);
+
+INSERT INTO emails VALUES
+(1, "j@b.io", "", "tracks", "el zzott greatioso", Time.now, true, 34),
+(2, "j@b.io", "", "baks", "osoitaerg ttozz le", Time.now-1.day, false, 36),
+(3, "j@b.io", "", "zaks", "wahahahahahahazzzzzzzzzz", Time.now+1.day?, true, 1000);
+
+DELETE FROM emails WHERE id=1;
+
+UPDATE emails SET cc="jobob@dude.ette" WHERE id=3;
