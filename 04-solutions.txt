@@ -1,0 +1,86 @@
+1) SELECT column1, column2, ... (*) FROM *tables WHERE something;
+
+2) make it into a song.
+
+3) 
+
+CREATE DATABASE pets;
+
+CREATE TABLE dogs (
+    id integer, unique true,
+    name string,
+    gender string,
+    age integer,
+    weight float,
+    intake_date date,
+    breed string,
+    in_foster boolean
+);
+
+SELECT name, gender, age FROM dogs WHERE breed LIKE '%Labrador%';
+
+SELECT id FROM dogs WHERE age < 1;
+
+SELECT name, age FROM dogs WHERE gender='female' AND weight > 35;
+
+SELECT * FROM dogs WHERE breed NOT LIKE '%Shepherd%';
+
+SELECT id, age, weight, breed FROM dogs WHERE weight > 60 OR breed='Great Dane';
+
+4) Cats answers below:
+
+The table:
+| id    | name      |gender |age |intake_date | adoption_date |
+| ----- | --------  | ----- |----|------------|---------------| 
+| 00001 | Mushi     | M     | 1  | 01-09-2016 | 03-22-2016    | 
+| 00002 | Seashell  | F     | 7  | 01-09-2016 |               | 
+| 00003 | Azul      | M     | 3  | 01-11-2016 | 04-17-2016    | 
+| 00004 | Victoire  | M     | 7  | 01-11-2016 | 09-01-2016    | 
+| 00005 | Nala      | F     | 1  | 01-12-2016 |               |
+
+SELECT DISTINCT ON (gender) * FROM cats; will return nothing
+
+SELECT name, age FROM cats; will return:
+
+| name      |age |
+| --------  |----|
+| Mushi     | 1  |
+| Seashell  | 7  |
+| Azul      | 3  |
+| Victoire  | 7  |
+| Nala      | 1  |
+
+SELECT * FROM cats WHERE adoption_date IS NULL;
+
+SELECT DISTINCT(age) * FROM cats;
+
+SELECT name FROM cats;
+
+<   -->  less than use to find less than
+>   -->  greater than invert above!
+<=  -->  less than or equals
+>=  -->  greater than or equals
+=   -->  equals
+!=  -->  not_equals
+<>  -->  not_equals
+
+5) 
+SELECT name FROM cats WHERE gender = ‘F’
+| name      |
+| --------  |
+| Seashell  |
+| Nala      |
+
+SELECT name FROM cats WHERE age <> 3
+| name     |
+| -------- |
+| Mushi    |
+| Seashell |
+| Victoire |
+| Nala     |
+
+SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’
+| id    |
+| ----- |
+| 00003 |
+| 00004 |
