@@ -1,0 +1,55 @@
+1)  MIN         --> Use it to find the smallest entry
+    MAX         --> Use to fing the largest entry
+    GROUP BY    --> Take a bunch of rows and group them under some condition
+    HAVING      --> acts like a WHERE clause but for groups not individual rows
+    ORDER BY    --> Order returned rows by some condition/column
+    
+2) Assignment missing table...
+    
+SELECT SUM(amount) FROM donations;
+
+SELECT SUM(amount) as total, name 
+FROM donations
+GROUP_by name;
+
+SELECT AVG(amount) FROM donations;
+FROM donations
+GROUP_by name;
+
+SELECT COUNT(id) FROM donations WHERE amount > 100;
+
+SELECT MAX(amount) FROM donations;
+
+SELECT MIN(amount) FROM donations;
+
+
+3) By Using a order by statement
+
+4) When you need to take the middle 5 entries of a SELECT statement
+
+5) In order to get a sorted result.
+
+6) HAVING is used on groups, whereas WHERE is used on rows.
+
+7)  HAVING should be WHERE
+
+cats
+| id   | name       | gender  | age  | intake_date     | adoption_date   |
+|------|------------|---------|------|-----------------|-----------------| 
+|00001 | Mushi      | M       | 1    | 01-09-2016      | 03-22-2016      | 
+|00002 | Seashell   | F       | 7    | 01-09-2016      |                 | 
+|00003 | Azul       | M       | 3    | 01-11-2016      | 04-17-2016      | 
+|00004 | Victoire   | M       | 7    | 01-11-2016      | 09-01-2016      | 
+|00005 | Nala       | F       | 1    | 01-12-2016      |                 |
+
+8) 
+
+SELECT * FROM cats ORDER BY intake_date;
+
+SELECT * FROM adoptions LIMIT 5;
+
+SELECT * FROM cats GROUP BY age >= 2 HAVING gender = 'F';
+
+SELECT * FROM donations LIMIT 5;
+
+SELECT * FROM donations LIMIT 10 OFFSET 5;
