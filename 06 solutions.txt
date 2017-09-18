@@ -1,0 +1,76 @@
+1) Using a JOIN clause
+
+2) 
+    CROSS JOIN         --> Make a row out of every column from A and B 
+    INNER JOIN         --> Make a row out of every column shared by A and B
+    LEFT OUTER JOIN    --> INNER JOIN and then add the rest of A with null values
+    RIGHT OUTER JOIN   --> INNER JOIN and then add the rest of B with null values     
+    FULL OUTER JOIN    --> INNER JOIN then LEFT and RIGHT OUTER JOIN 
+
+3) The primary key is a unique identifier for any row in a table. A foreign key
+is used to reference a primary key from a different table, as a way of associating 
+to rows to one another.
+
+4) like variables in code, Aliasing allows you to create custom names for table
+to make code shorter.
+
+5) 
+SELECT p.name, c.salary, c.vacation_days 
+FROM professor AS p
+JOIN compensation AS c
+ON p.id = c.professor_id;
+
+6) A NATURAL JOIN is used to combine all shared columns. This is of course the most
+'natural' type of JOIN as it looks for shared traits between tables and joins them.
+A use for this might be finding overlapping traits between types of fish.
+
+7) 
+
+CREATE TABLE employee (
+    id integer primary key,
+    data text
+);
+
+CREATE TABLE shift (
+    id integer,
+    employee_id integer REFERENCES employee(id)
+);
+
+SELECT * FROM shift FULL OUTER JOIN employee ON shift.employee_id = employee.id;
+
+SELECT * FROM employee CROSS JOIN shift;
+
+8)  dog         : id, name, gender, age, weight, intake_date, breed, in_foster
+    adoption    : id, adopter, cat, dog, fee, date
+    adopter     : first_name, last_name, address, phone_number
+    volunteer   : id, name, address, phone_number, available_to_foster, foster_id
+    
+SELECT * FROM volunteer LEFT OUTER JOIN dog ON dog.in_foster = true; 
+
+SELECT adoption.adopter.name, dog.name FROM adoption WHERE date > '8/17/17'
+LEFT OUTER JOIN dog ON dog.id = adoption.dog;
+
+SELECT * FROM adopter CROSS JOIN dog;
+
+SELECT * FROM dog FULL OUTER JOIN cat;
+
+SELECT * FROM volunteer WHERE available_to_foster = true 
+LEFT OUTER JOIN dog ON dog.in_foster = false
+
+9) 
+SELECT adopter.name FROM adoption WHERE cat.name = "Seashell";
+
+10)
+SELECT user.name, hold.rank FROM holds INNER JOIN user ON user.id = holds.user_id 
+GROUP BY hold.rank
+ORDER BY ASC;
+
+SELECT book.title FROM book GROUP BY transaction.
+
+SELECT SUM(checked_in_date - checked_out_date) FROM transaction 
+WHERE checked_out_date > '8/18/17'
+GROUP BY books.title;
+
+SELECT book.title FROM book WHERE transaction.checked_out_date > '9/18/12'
+
+SELECT patron.name FROM patron INNER JOIN transaction.isbn ON transaction.user_id = patron.id;
