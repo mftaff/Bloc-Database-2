@@ -1,0 +1,13 @@
+student 
+    id integer PK
+    name text
+    
+class
+    id integer PK
+    title text
+
+enrolled
+    id integer PK
+    student_id integer FK
+    class_id integer FK
+    grade integer
