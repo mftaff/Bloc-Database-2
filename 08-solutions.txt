@@ -1,0 +1,65 @@
+1) When dealing with large datasets, in conjuction with complex entity relationships, 
+a database can get very messy. To try and solve this one can normalize the database. The 
+aim would be to get rid of redundency, and using progressive laws, structure the database
+in a way that leads to all tables being one-tracked and self-contained. 
+
+An example of a real world use for this could be a shipping company keeping track 
+of it's assets, as well as cargo. The company would need tables for all distribution
+centers, all different cargo carrying entities, all employees, and all the cargo. 
+Also critical is the relationship between all these entities. Where does a ship make
+berth? Where does an employee work? What vehicle does he work with? Where does cargo
+need to go? How should it get there? When should it get there? Where did it come from?
+All this data needs to be in the database.
+
+2) 
+1NF  -> first normal form      --> All columns must contain only one value    
+2NF  -> second normal form     --> All non-key attributes must only relate to the key   
+3NF  -> third normal form      --> Transitive dependencies cannot exist    
+BCNF -> boyce-codd normal form --> All dependencies must exist in a table with one super key   
+
+With regards to the above example, 1NF is achievable simply by making sure not to
+having multiple values. It gets more complicated to gi 2 or 3 NF. For 2NF we would need
+to create new tables for every subject of data. For example: an employee needs a table
+for identifying data, age, name etc, he also needs a table for his work schedule/location,
+and finally a table for the vehicle he works with. To satisfy 3NF we would need to make
+sure that all the columns in each table only depend on the key of that table, and through
+the key we can relate to other tables. Finally to satisfy BCNF we would need to go through
+again and check that all dependencies only relate to one key.
+
+3)
+| student_id | student_email            | student_name |
+|------------|--------------------------|--------------|
+| 1          | john.b20@hogwarts.edu    | John B       |
+| 2          | sarah.s20@hogwarts.edu   | Sarah S      |
+| 3          | martha.l20@hogwarts.edu  | Martha L     |
+| 4          | james.g20@hogwarts.edu   | James G      |
+| 5          | stanley.p20@hogwarts.edu | Stanley P    |
+
+| student_id | professor_id | subject     | grade |
+|------------|--------------|-------------|-------|
+| 1          | 2            | Philosophy  | A     |
+| 2          | 2            | Philosophy  | C     |
+| 3          | 1            | Economics   | A     |
+| 4          | 3            | Mathematics | B     |
+| 5          | 1            | Economics   | B     |
+
+| professor_id | subject     |
+|--------------|-------------|
+| 2            | Philosophy  |
+| 2            | Philosophy  |
+| 1            | Economics   |
+| 3            | Mathematics |
+| 1            | Economics   |
+
+| professor_id | professor_name |
+|--------------|----------------|
+| 2            | William C      |
+| 2            | William C      |
+| 1            | Natalie M      |
+| 3            | Mark W         |
+| 1            | Natalie M      |
+
+4) The disadvantage of normalizing data is that read times become more inefficient, and
+queries become more complicated. But write times are more efficient.
+
+5) You could just do an outer join and exlude any shared tables.
