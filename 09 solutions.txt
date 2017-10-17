@@ -1,0 +1,65 @@
+1) A subquery is when you use the results of a query in a query. For example to 
+only SELECT something WHERE it is present in some other field, to do this you would
+make a subquery of that field in your WHERE statement, and then SQL would use the 
+returned rows to check against.
+
+2) IN the SELECT, FROM, or WHERE statements.
+
+3) You would use a subquery whenever you need to get information from somewhere other
+than the immediate table, and bring it into the final query. (has similar utility to
+a JOIN)
+
+4) A row constructor is used with WHERE to check some value against a one-time row.
+
+5) The result will be NULL
+
+6) EXISTS, NOT IN, IN, ANY, SOME, ALL
+
+7) employee shift tables:
+employee:       shift
+id PK           id PK
+name            employee_id FK
+
+all employees and shifts:
+SELECT * FROM employee, shift;
+
+all possible schedules:
+SELECT * 
+
+dogs table      cats table      adoptions table     adopters table  volunteers table   
+id,             id,             id,                 first_name,     id,    
+name,           name,           adopter,            last_name,      name,    
+gender,         gender,         cat,                address,        address,    
+age,            age,            dog,                phone number    phone_number,    
+weight,         intake_date,    fee,                                available_to_foster,     
+intake_date,    adoption_date   date                                foster_id    
+breed,                                                                  
+in_foster.                                                              
+
+8) these tables seemed poorly constructed...
+SELECT (SELECT dogs.name FROM dogs WHERE in_foster = foster_id), * FROM volunteers;
+SELECT dog.name, adopter.last_name FROM adoptions WHERE date < '09/17/2017'; 
+SELECT adopters.first_name, dogs.name FROM dogs, adopters;
+SELECT dogs.name, cats.name, FROM dogs, cats WHERE cat.name, dog.name NOT IN 
+(SELECT cat.name, dog.name FROM adoptions;);
+SELECT name FROM volunteers WHERE available_to_foster = true;
+
+9) SELECT adoptor.last_name FROM adoptions WHERE adoptions.cat.name = 'SeaShell';
+
+10) 
+SELECT name FROM patron WHERE id in (SELECT user_id FROM transactions ORDER BY checked_out_date); 
+SELECT isbn, title, (SELECT checked_out FROM transactions WHERE transactions.isbn = isbn) FROM books;
+SELECT isbn, title, (SELECT SUM(checked_out) FROM transactions WHERE transactions.isbn = isbn)  FROM book; 
+SELECT isbn, title FROM books WHERE isbn in (SELECT isbn FROM transactions WHERE checked_out_date < '10/17/2012');
+SELECT id, name, (SELECT isbn FROM transactions WHERE user_id = id) FROM patrons;
+
+11) 
+SELECT airplane_model FROM flights WHERE flight_number in 
+(SELECT flight_number FROM transactions WHERE seats_sold > 100 AND date < '09/17/2017');
+
+SELECT destination, origin FROM flights WHERE flight_number in
+(SELECT flight_number FROM transactions WHERE date < '09/17/2017' AND
+seats_sold/seat_capacity > 0.9);
+
+SELECT total_revenue FROM transactions WHERE flight_number in 
+(SELECT flight_number FROM flights WHERE origin = 'Atlanta'); 
